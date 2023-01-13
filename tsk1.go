@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func welcmhandler(w http.ResponseWriter, r *http.Request) {
+func welcomehandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path[9:] == "hello" {
 		fmt.Fprintf(w, "Hey, %s!", r.URL.Path[9:])
 	} else {
@@ -36,7 +36,7 @@ func nameshandler(w http.ResponseWriter, r *http.Request) {
 
 // }
 func main() {
-	http.HandleFunc("/averlon/", welcmhandler)
+	http.HandleFunc("/averlon/", welcomehandler)
 	http.HandleFunc("/averlon/names/", nameshandler)
 	log.Fatal(http.ListenAndServe(":4000", nil))
 }
